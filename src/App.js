@@ -60,7 +60,7 @@ class App extends React.Component {
     event.preventDefault();
     this.setState({
       ...this.state,
-      tasks: this.state.tasks.filter( item => !item.completed)
+      tasks: this.state.tasks.filter(item => !item.completed)
     })
   }
 
@@ -69,8 +69,8 @@ class App extends React.Component {
       <div>
         <h2>Welcome to your Todo App!</h2>
         <h4>Tasks:</h4>
-        <TodoList toggleItem={this.toggleItem} tasks={this.state.tasks}/>
-        <TodoForm addTask={this.addTask} clearTasks={this.clearTasks}/>
+        <TodoList toggleItem={this.toggleItem} tasks={this.state.tasks} clearTasks={this.clearTasks}/>
+        <TodoForm addTask={this.addTask}/>
       </div>
     );
   }
