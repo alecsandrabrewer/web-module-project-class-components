@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import ReactDom from 'react-dom';
 
+import './styles.scss';
+
 import Todo from './components/Todo';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
@@ -10,6 +12,11 @@ const tasks = [
     task: 'Complete HW',
     id: 1, 
     completed: false
+  },
+  {
+    task: 'Make Dinner',
+    id: 2,
+    completed: false 
   }
 ];
 
@@ -30,27 +37,40 @@ class App extends React.Component {
       }
       return item;
     })
+    console.log('updated tasks list array', updatedTasks)
     this.setState({
       ...this.state,
       tasks: updatedTasks
     })
   }
 
-
-
-  //// Event Handlers
-  handleInputChnage = event => {
-    this.setState({ tasks: event.target.value });
+  addTask = taskName => {
+    this.setState({
+      ...this.state, 
+      tasks: [...this.state.tasks, 
+        {
+          task: taskName,
+          id: Date.now(), 
+          completed: false
+      }]
+    })
   }
 
+  clearTasks = event => {
+    event.preventDefault();
+    this.setState({
+      ...this.state,
+      tasks: this.state.tasks.filter( item => !item.completed)
+    })
+  }
 
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         <h4>Tasks:</h4>
-        <TodoList toggleItem={this.toggleItem} tasks={tasks}/>
-        {/* <TodoForm/> */}
+        <TodoList toggleItem={this.toggleItem} tasks={this.state.tasks}/>
+        <TodoForm addTask={this.addTask} clearTasks={this.clearTasks}/>
       </div>
     );
   }
