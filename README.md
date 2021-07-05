@@ -38,7 +38,7 @@ We're going to practice building a stateful class component with this project. E
 - [ ] Clone your OWN version of the repository in your terminal
 - [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
 - [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
-- [ ] Push commits: git push origin `<firstName-lastName>`.
+- [ ] Push commits: git push origin `<firstName-lastName>`
 
 Follow these steps for completing your project.
 
